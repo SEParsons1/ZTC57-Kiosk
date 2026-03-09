@@ -9,18 +9,42 @@ html, body {
   height: 100%;
   background: white;
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
-img {
+.logo {
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 220px;
   pointer-events: none;
 }
+.settings-tile {
+  position: fixed;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.settings-tile img {
+  width: 72px;
+  height: 72px;
+}
+.settings-tile span {
+  margin-top: 10px;
+  font-size: 20px;
+}
 </style>
 </head>
 <body>
-<img src="file:///sdcard/Pictures/4cd6ffbd-8677-427d-9298-b0f45e94fd32.jpg">
+<img class="logo" src="file:///sdcard/Pictures/4cd6ffbd-8677-427d-9298-b0f45e94fd32.jpg">
+<a class="settings-tile" href="intent:#Intent;action=android.settings.SETTINGS;end">
+  <img src="settings.svg" alt="Settings">
+  <span>Settings</span>
+</a>
 </body>
 </html>
