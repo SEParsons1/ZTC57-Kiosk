@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+body {
+  position: relative;
+}
+.logo {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  pointer-events: none;
+}
+.launcher-bar {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+}
+.app-tile {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 160px;
+  padding: 8px 0;
+  background: transparent;
+}
+.app-tile img {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+}
+.app-tile span {
+  font-size: 19px;
+  line-height: 1.2;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<img class="logo" src="file:///sdcard/Pictures/4cd6ffbd-8677-427d-9298-b0f45e94fd32.jpg">
+<div class="launcher-bar">
+  <a class="app-tile" href="#" data-package="com.shiptrack.app">
+    <img src="assets/shiptrackplus.png" alt="ShipTrack+">
+    <span>ShipTrack+</span>
+  </a>
+  <a class="app-tile" href="#" data-package="com.companyname.purolatorscanning">
+    <img src="assets/purolator.png" alt="Purolator Scanning">
+    <span>Purolator Scanning</span>
+  </a>
+</div>
+<script>
+function buildIntentUri(packageName) {
+  return "intent://launch/#Intent;"
+    + "action=android.intent.action.MAIN;"
+    + "category=android.intent.category.LAUNCHER;"
+    + "package=" + packageName + ";"
+    + "end";
+}
+
+document.querySelectorAll(".app-tile").forEach(function (tile) {
+  tile.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.location.href = buildIntentUri(tile.dataset.package);
+  });
+});
+</script>
+</body>
+</html>
